@@ -1,12 +1,12 @@
 var fileData = new Set();
-function handleFileRead(event) {  
+async function handleFileRead(event) {  
     let data = event.target.result;
     if (!fileData.has(data)) {
         let idx = fileData.size;
         fileData.add(data);
         let $cont = $("<div>", { class: "img-preview-container", "data-idx": idx });
         let $img = $("<img>", { class: "img-preview", src: data });
-        let $del = $("<img>", { class: "img-preview-delete", src: "../img/close-line.svg" });
+        let $del = $("<img>", { class: "img-preview-delete", src: "../img/xmark.svg" });
         $img.appendTo($cont);
         $del.appendTo($cont);
         $cont.appendTo($("#img-preview-grid"));
