@@ -6,7 +6,7 @@ async function handleFileRead(event) {
         fileData.add(data);
         let $cont = $("<div>", { class: "img-preview-container", "data-idx": idx });
         let $img = $("<img>", { class: "img-preview", src: data });
-        let $del = $("<img>", { class: "img-preview-delete", src: "../img/xmark.svg" });
+        let $del = $("<img>", { class: "img-preview-delete", src: "/img/xmark.svg" });
         $img.appendTo($cont);
         $del.appendTo($cont);
         $cont.appendTo($("#img-preview-grid"));
