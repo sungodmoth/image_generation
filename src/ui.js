@@ -31,12 +31,15 @@ function deleteImage() {
         $(`.img-preview-container[data-idx='${i}']`).attr("data-idx", i - 1);
     }
 }
-function generateDisplaySVG() {
-    $("#output-img-container svg, #output-img-container img").remove();
-    $(generateSVG(fileData)[0]).appendTo("#output-img-container");
+function downloadSVG() {
+    var svgBlob = new Blob([generateSVG(fileData)], {type:"image/svg+xml;charset=utf-8"});
+    var downloadLink = document.createElement("a");
+    downloadLink.href = URL.createObjectURL(svgBlob);
+    downloadLink.download = "download.svg";
+    downloadLink.click();
 }
-async function generateDisplayPNG() {
-    $("#output-img-container svg, #output-img-container img").remove();
+async function generatePNG() {
+    $("#output-img-container img").remove();
     var [svg, width, height] = generateSVG(fileData);
     $(await svg2png(svg, width, height)).appendTo("#output-img-container");
 }
@@ -47,6 +50,6 @@ $(document).ready(function(){
     $("#img-upload-underlying").change(addFiles);
     $("#img-preview-grid").on("click", ".img-preview-delete", deleteImage);
     $("#img-preview-grid").on("click", ".img-preview", handleImageClick);
-    $("#generate-svg-button").click(generateDisplaySVG);
-    $("#generate-png-button").click(generateDisplayPNG);
+    $("#download-svg-button").click(downloadSVG);
+    $("#generate-png-button").click(generatePNG);
 })

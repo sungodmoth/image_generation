@@ -53,7 +53,7 @@ body {
     top: -5%;
     position: absolute;
 }
-#generate-svg-button-container, #generate-png-button-container {
+#download-svg-button-container, #generate-png-button-container {
     width: fit-content;
     margin: 0 auto;
 }
@@ -61,7 +61,7 @@ body {
     font-family: "sans";
     font-size: 4vh;
 }
-#generate-svg-button {
+#download-svg-button {
     font-family: "sans";
     font-size: 2vh;
 }
